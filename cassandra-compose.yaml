@@ -1,0 +1,49 @@
+version: '2'
+
+services:
+  cassandra-node01:
+    container_name: cassandra-node01
+    image: cassandra
+    volumes:
+      - /Users/sasithornwu/Desktop/data/cassandra/node-01:/var/lib/cassandra cassandra
+    ports:
+      - 9042:9042
+    environment:
+      - CASSANDRA_START_RPC=true
+      - CASSANDRA_CLUSTER_NAME=MyCluster
+      - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+      - CASSANDRA_DC=datacenter1
+
+  cassandra-node02:
+    container_name: cassandra-node02
+    image: cassandra
+    volumes:
+      - /Users/sasithornwu/Desktop/data/cassandra/node-02:/var/lib/cassandra
+    ports:
+      - 9043:9042
+    command: bash -c 'sleep 60;  /docker-entrypoint.sh cassandra -f'
+    depends_on:
+      - cassandra-node01
+    environment:
+      - CASSANDRA_START_RPC=true
+      - CASSANDRA_CLUSTER_NAME=MyCluster
+      - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+      - CASSANDRA_DC=datacenter1
+      - CASSANDRA_SEEDS=cassandra-node01
+
+  cassandra-node03:
+    container_name: cassandra-node03
+    image: cassandra
+    volumes:
+      - /Users/sasithornwu/Desktop/data/cassandra/node-03:/var/lib/cassandra
+    ports:
+      - 9044:9042
+    command: bash -c 'sleep 120;  /docker-entrypoint.sh cassandra -f'
+    depends_on:
+      - cassandra-node01
+    environment:
+      - CASSANDRA_START_RPC=true
+      - CASSANDRA_CLUSTER_NAME=MyCluster
+      - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+      - CASSANDRA_DC=datacenter1
+      - CASSANDRA_SEEDS=cassandra-node01
