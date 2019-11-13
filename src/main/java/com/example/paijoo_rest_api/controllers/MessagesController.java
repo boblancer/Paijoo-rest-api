@@ -31,5 +31,10 @@ public class MessagesController {
         return messagesService.findUnreceivedMessages(req.getUser_id());
 
     }
+    @RequestMapping(value="/hello", method = RequestMethod.GET)
+    String hello(){
+        return "Hello";
+
+    }
 
 }
