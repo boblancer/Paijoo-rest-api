@@ -7,10 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Data
-@Entity(name="text_content")
-public class TextContent {
+@Entity(name="users")
+public class Users {
+
     @Id
+    @Column(name = "id")
     private int id;
     @Column(name = "content")
-    private String content;
+    private String username;
+    @Column(name = "password")
+    private String password;
+    @Column(name = "salt")
+    private String salt;
 }
