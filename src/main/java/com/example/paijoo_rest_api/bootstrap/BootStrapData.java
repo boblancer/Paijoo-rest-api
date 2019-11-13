@@ -15,10 +15,5 @@ public class BootStrapData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Messages t1 = new Messages();
-        t1.setAuthor_id(1);
-        t1.setAuthor_id(1);
-        t1.setRecipient_id(2);
-        messagesRepository.save(t1);
     }
 }

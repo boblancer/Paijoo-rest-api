@@ -1,8 +1,12 @@
 package com.example.paijoo_rest_api.controllers;
 
+import com.example.paijoo_rest_api.model.Conversation;
 import com.example.paijoo_rest_api.model.Messages;
+import com.example.paijoo_rest_api.model.RequestBody.MessagesByConversationId;
 import com.example.paijoo_rest_api.services.MessagesService;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Timestamp;
@@ -21,8 +25,11 @@ public class MessagesController {
         this.messagesService = messagesService;
     }
 
-    @RequestMapping("/test")
-    List<Messages> getTextMessageByUsersId(){
-        return messagesService.findMessageBetweenUsersById(1L,2L, new Timestamp(1));
+    @RequestMapping(value="/get", method = RequestMethod.GET)
+    ArrayList<Conversation>  findUnreceivedMessages(@RequestBody MessagesByConversationId req){
+        System.out.println(req);
+        return messagesService.findUnreceivedMessages(req.getUser_id());
+
     }
+
 }
