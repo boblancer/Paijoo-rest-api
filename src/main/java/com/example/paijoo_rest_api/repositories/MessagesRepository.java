@@ -10,10 +10,10 @@ import java.util.Calendar;
 import java.util.List;
 
 public interface MessagesRepository extends JpaRepository<Messages, Long> {
-    @Query(value="SELECT m.conversation_id FROM messages m " +
+    @Query(value="SELECT * FROM messages m " +
             "where m.received = FALSE and m.recipient_id = :recipient_id"
             , nativeQuery = true)
-    ArrayList<Integer> findConversationIdWithUnreceivedMessages(
+    ArrayList<Messages> findUnreceivedMessages(
             @Param("recipient_id") int recipient_id);
 
     @Query(value="SELECT * FROM messages m " +

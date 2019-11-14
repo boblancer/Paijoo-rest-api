@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.util.*;
 
+import static java.util.stream.Collectors.groupingBy;
+
 @Service
 public class MessagesServiceImpl implements MessagesService {
     @Autowired
@@ -19,25 +21,26 @@ public class MessagesServiceImpl implements MessagesService {
         this.messagesRepository = messagesRepository;
     }
     @Override
-    public ArrayList<Conversation> findUnreceivedMessages(int id){
-        ArrayList<Integer> conversationIds = this.findAllUnreceivedConversationIdByUserId(id);
-        ArrayList<Conversation> conversations = new ArrayList<>();
-        for(Integer n: conversationIds){
-            ArrayList<Messages> m = messagesRepository.findUnreceivedMessagesByConversationId(n);
-            Conversation c = new Conversation(m);
-            conversations.add(c);
-        }
-        System.out.println(conversations);
-        conversations.sort(new ConversationComparator());
-        return conversations;
+
+    public Map<Integer, List<Messages>> findUnreceivedMessages(int id){
+        ArrayList<Messages> unreceivedMessages = messagesRepository.findUnreceivedMessages(id);
+
+        //System.out.println(conversations);
+        //conversations.sort(new ConversationComparator());
+        Map<Integer, List<Messages>> messagePerConversation = unreceivedMessages.stream()
+                .collect(groupingBy(Messages::getConversation_id));
+        System.out.println(messagePerConversation);
+        ArrayList<Conversation> result = new ArrayList<Conversation>();
+        result.add(new Conversation(unreceivedMessages));
+        return messagePerConversation;
     }
 
     @Override
     public ArrayList<Integer> findAllUnreceivedConversationIdByUserId(int id) {
-        LinkedHashSet<Integer> conversationIds = new LinkedHashSet<>(
-                messagesRepository.findConversationIdWithUnreceivedMessages(id));
-        ArrayList<Integer> unique_conversationIds = new ArrayList<Integer>(conversationIds);
-        return unique_conversationIds;
+        //LinkedHashSet<Integer> conversationIds = new LinkedHashSet<>(
+                //messagesRepository.findConversationIdWithUnreceivedMessages(id));
+        //ArrayList<Integer> unique_conversationIds = new ArrayList<Integer>(conversationIds);
+        return null;
     }
 
 

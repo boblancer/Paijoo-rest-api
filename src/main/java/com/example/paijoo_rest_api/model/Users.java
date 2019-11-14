@@ -13,7 +13,7 @@ public class Users {
     @Id
     @Column(name = "id")
     private int id;
-    @Column(name = "content")
+    @Column(name = "username")
     private String username;
     @Column(name = "password")
     private String password;

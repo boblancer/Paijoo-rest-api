@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(MessagesController.BASR_URL)
@@ -26,7 +27,7 @@ public class MessagesController {
     }
 
     @RequestMapping(value="/get", method = RequestMethod.GET)
-    ArrayList<Conversation>  findUnreceivedMessages(@RequestBody MessagesByConversationId req){
+    Map<Integer, List<Messages>> findUnreceivedMessages(@RequestBody MessagesByConversationId req){
         System.out.println(req);
         return messagesService.findUnreceivedMessages(req.getUser_id());
 
