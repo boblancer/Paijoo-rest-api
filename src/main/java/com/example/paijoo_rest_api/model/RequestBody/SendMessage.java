@@ -1,29 +1,19 @@
 package com.example.paijoo_rest_api.model.RequestBody;
 
-public class SendMessageREQ {
-    @Column(name = "id")
-    private int id;
-    @Column(name = "author_id")
+import com.example.paijoo_rest_api.model.TextContent;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Calendar;
+
+@Data
+@NoArgsConstructor
+public class SendMessage<C extends ContentRequestBody> {
+
     private int author_id;
-    @Column(name = "recipient_id")
     private int recipient_id;
-    @Column(name = "content_type")
     private int content_type;
-
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "content_id")
-    private TextContent content;
-
-    @Column(name = "seen")
-    private Boolean seen;
-    @Column(name = "received")
-    private Boolean received;
-
-    @Column(name = "created_at")
-    @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "yyyy-MM-dd HHH:mm:ss")
     private Calendar created_at;
-
-    @Column(name = "conversation_id")
+    private C content;
     private int conversation_id;
 }

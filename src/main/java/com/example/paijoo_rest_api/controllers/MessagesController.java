@@ -1,19 +1,15 @@
 package com.example.paijoo_rest_api.controllers;
 
-import com.example.paijoo_rest_api.model.Conversation;
 import com.example.paijoo_rest_api.model.Messages;
-import com.example.paijoo_rest_api.model.RequestBody.MessagesByConversationId;
+import com.example.paijoo_rest_api.model.RequestBody.SendMessage;
+import com.example.paijoo_rest_api.model.RequestBody.TextContentRequestBody;
+import com.example.paijoo_rest_api.model.RequestBody.UserId;
 import com.example.paijoo_rest_api.services.MessagesService;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
+@CrossOrigin
 @RestController
 @RequestMapping(MessagesController.BASR_URL)
 public class MessagesController {
@@ -26,15 +22,20 @@ public class MessagesController {
         this.messagesService = messagesService;
     }
 
-    @RequestMapping(value="/get", method = RequestMethod.GET)
-    Map<Integer, List<Messages>> findUnreceivedMessages(@RequestBody MessagesByConversationId req){
-        System.out.println(req);
-        return messagesService.findUnreceivedMessages(req.getUser_id());
+    @RequestMapping(value="/{id}", method = RequestMethod.GET)
+    Map<Integer, List<Messages>> findUnreceivedMessages(@PathVariable("id") int id){
+        System.out.println(id);
+        return messagesService.findUnreceivedMessages(id);
 
     }
     @RequestMapping(value="/hello", method = RequestMethod.GET)
     String hello(){
         return "Hello";
+
+    }
+    @PostMapping("/post")
+    SendMessage<TextContentRequestBody> send(@RequestBody SendMessage<TextContentRequestBody> req){
+        return req;
 
     }
 

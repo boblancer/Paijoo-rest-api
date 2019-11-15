@@ -1,4 +1,10 @@
 package com.example.paijoo_rest_api.model.RequestBody;
 
-public class TextContentRequestBody {
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+public class TextContentRequestBody implements ContentRequestBody {
+    private String text;
 }
