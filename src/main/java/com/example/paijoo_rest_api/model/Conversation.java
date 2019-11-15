@@ -9,8 +9,8 @@ import java.util.Calendar;
 @Data
 @AllArgsConstructor
 public class Conversation {
+    int Conversation_id;
     ArrayList<Messages> messages;
-
     public Calendar getLastMessageTimestamp(){
         if (messages != null) {
             Calendar c = messages.get(messages.size() - 1).getCreated_at();

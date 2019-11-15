@@ -22,7 +22,7 @@ public class MessagesServiceImpl implements MessagesService {
     }
     @Override
 
-    public Map<Integer, List<Messages>> findUnreceivedMessages(int id){
+    public ArrayList<Conversation> findUnreceivedMessages(int id){
         ArrayList<Messages> unreceivedMessages = messagesRepository.findUnreceivedMessages(id);
 
         //System.out.println(conversations);
@@ -31,8 +31,10 @@ public class MessagesServiceImpl implements MessagesService {
                 .collect(groupingBy(Messages::getConversation_id));
         System.out.println(messagePerConversation);
         ArrayList<Conversation> result = new ArrayList<Conversation>();
-        result.add(new Conversation(unreceivedMessages));
-        return messagePerConversation;
+        for(Map.Entry<Integer, List<Messages>> entry: messagePerConversation.entrySet()){
+            result.add(new Conversation(entry.getKey(), (ArrayList<Messages>) entry.getValue()));
+        }
+        return result;
     }
 
     @Override

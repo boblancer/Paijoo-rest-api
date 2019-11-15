@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface MessagesService {
-    Map<Integer, List<Messages>> findUnreceivedMessages(int id);
+    ArrayList<Conversation> findUnreceivedMessages(int id);
     ArrayList<Integer> findAllUnreceivedConversationIdByUserId(int id);
     Boolean createMessage(Long user_id, Long participant_id,
                           Timestamp lastMessageReceived);
