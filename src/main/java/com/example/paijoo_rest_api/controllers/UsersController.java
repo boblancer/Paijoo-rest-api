@@ -36,4 +36,10 @@ public class UsersController {
         return usersService.getFriendListById(id);
 
     }
+
+    @GetMapping("/hello")
+    String hello(){
+        return "Hello from user controller";
+
+    }
 }
