@@ -1,10 +1,7 @@
 package com.example.paijoo_rest_api.controllers;
-
 import com.example.paijoo_rest_api.model.RequestBody.CreateUserRequest;
 import com.example.paijoo_rest_api.model.database.Users;
-import com.example.paijoo_rest_api.services.MessagesService;
 import com.example.paijoo_rest_api.services.UsersService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -26,7 +23,6 @@ public class UsersController {
     CreateUserRequest createUser(@RequestBody CreateUserRequest req){
         usersService.registerUser(req.getUsername(), req.getPassword(), req.getId());
         return req;
-
     }
 
     @GetMapping("/{id}/friends")

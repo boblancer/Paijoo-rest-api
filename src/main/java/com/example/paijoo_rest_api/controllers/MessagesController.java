@@ -30,8 +30,8 @@ public class MessagesController {
     @RequestMapping(value="/hello", method = RequestMethod.GET)
     String hello(){
         return "Hello";
-
     }
+
     @PostMapping("/post")
     SendMessage<TextContentRequestBody> sendMessage(@RequestBody SendMessage<TextContentRequestBody> req){
         return req;
