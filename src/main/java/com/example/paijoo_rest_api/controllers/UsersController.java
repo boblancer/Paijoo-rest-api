@@ -23,7 +23,7 @@ public class UsersController {
 
     @PostMapping("/create")
     CreateUserRequest send(@RequestBody CreateUserRequest req){
-        usersService.
+        usersService.registerUser(req.getUsername(), req.getPassword());
         return req;
 
     }

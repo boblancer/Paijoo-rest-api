@@ -19,12 +19,13 @@ public class UsersServiceImpl implements UsersService{
 
     @Override
     public ArrayList<Users> getFriendListById(int id) {
-        return null;
+
+        return usersRepository.getFriendListById(id);
     }
 
     @Override
-    public Boolean registerUser(Users user) {
-        usersRepository.createUser(user.getUsername(), user.getPassword());
+    public Boolean registerUser(String username, String password) {
+        usersRepository.createUser(username, password);
         return Boolean.TRUE;
     }
 }
