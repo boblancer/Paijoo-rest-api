@@ -9,11 +9,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.ArrayList;
 
 public interface UsersRepository extends JpaRepository<Users, Long> {
-    @Query(value="INSERT INTO users VALUES (MAX(users.id), :username, :password, 'salty')"
-            , nativeQuery = true)
-    ArrayList<Messages> createUser(
-            @Param("username") String username,
-            @Param("password") String password);
 
     @Query(value="SELECT * from users u " +
             "RIGHT JOIN friendship f " +

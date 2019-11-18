@@ -6,5 +6,5 @@ import java.util.ArrayList;
 
 public interface UsersService {
     ArrayList<Users> getFriendListById(int id);
-    Boolean registerUser(String username, String password);
+    Boolean registerUser(String username, String password, int id);
 }

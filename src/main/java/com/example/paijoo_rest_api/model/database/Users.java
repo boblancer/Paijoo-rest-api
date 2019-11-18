@@ -1,5 +1,6 @@
 package com.example.paijoo_rest_api.model.database;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.Id;
 
 @Data
 @Entity(name="users")
+@AllArgsConstructor
 public class Users {
 
     @Id

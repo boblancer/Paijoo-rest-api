@@ -6,7 +6,7 @@ import javax.persistence.Column;
 
 @Data
 public class CreateUserRequest {
-
+    private int id;
     private String username;
     private String password;
 

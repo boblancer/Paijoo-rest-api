@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 @Service
 public class UsersServiceImpl implements UsersService{
+
     @Autowired
     private final UsersRepository usersRepository;
 
@@ -24,8 +25,9 @@ public class UsersServiceImpl implements UsersService{
     }
 
     @Override
-    public Boolean registerUser(String username, String password) {
-        usersRepository.createUser(username, password);
+    public Boolean registerUser(String username, String password, int id) {
+        Users user = new Users(id, username, password, "salty");
+        usersRepository.save(user);
         return Boolean.TRUE;
     }
 }
