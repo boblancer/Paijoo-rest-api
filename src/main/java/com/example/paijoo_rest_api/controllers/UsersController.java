@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 @CrossOrigin
 @RestController
-@RequestMapping(MessagesController.BASE_URL)
+@RequestMapping(UsersController.BASE_URL)
 public class UsersController {
     public static final String BASE_URL = "/users";
 
@@ -38,7 +38,7 @@ public class UsersController {
     }
 
     @GetMapping("/hello")
-    String hello(){
+    String UserHello(){
         return "Hello from user controller";
 
     }

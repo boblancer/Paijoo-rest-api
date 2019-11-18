@@ -33,7 +33,7 @@ public class MessagesController {
 
     }
     @PostMapping("/post")
-    SendMessage<TextContentRequestBody> send(@RequestBody SendMessage<TextContentRequestBody> req){
+    SendMessage<TextContentRequestBody> sendMessage(@RequestBody SendMessage<TextContentRequestBody> req){
         return req;
 
     }
