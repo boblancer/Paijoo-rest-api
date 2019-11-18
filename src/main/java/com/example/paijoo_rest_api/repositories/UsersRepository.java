@@ -11,9 +11,8 @@ import java.util.ArrayList;
 public interface UsersRepository extends JpaRepository<Users, Long> {
 
     @Query(value="SELECT * from users u " +
-            "RIGHT JOIN friendship f " +
-            "ON f.user_id = :id " +
-            "ORDER BY u.username"
+            "friendship f RIGHT JOIN users u ON f.user_id = u.id " +
+            "where f.user_id = :id"
             , nativeQuery = true)
     ArrayList<Users> getFriendListById(
             @Param("id") int id);
