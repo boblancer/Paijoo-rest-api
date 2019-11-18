@@ -1,6 +1,7 @@
-package com.example.paijoo_rest_api.model;
+package com.example.paijoo_rest_api.model.database;
 
 
+import com.example.paijoo_rest_api.model.database.TextContent;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 

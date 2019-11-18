@@ -1,6 +1,5 @@
 package com.example.paijoo_rest_api.model.RequestBody;
 
-import com.example.paijoo_rest_api.model.TextContent;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

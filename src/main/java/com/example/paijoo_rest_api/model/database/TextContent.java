@@ -1,4 +1,4 @@
-package com.example.paijoo_rest_api.model;
+package com.example.paijoo_rest_api.model.database;
 
 import lombok.Data;
 

@@ -1,13 +1,11 @@
 package com.example.paijoo_rest_api.repositories;
 
-import com.example.paijoo_rest_api.model.Messages;
+import com.example.paijoo_rest_api.model.database.Messages;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 
 public interface MessagesRepository extends JpaRepository<Messages, Long> {
     @Query(value="SELECT * FROM messages m " +

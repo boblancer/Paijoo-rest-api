@@ -1,22 +1,19 @@
 package com.example.paijoo_rest_api.controllers;
 
 import com.example.paijoo_rest_api.model.Conversation;
-import com.example.paijoo_rest_api.model.Messages;
 import com.example.paijoo_rest_api.model.RequestBody.SendMessage;
 import com.example.paijoo_rest_api.model.RequestBody.TextContentRequestBody;
-import com.example.paijoo_rest_api.model.RequestBody.UserId;
 import com.example.paijoo_rest_api.services.MessagesService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+
 @CrossOrigin
 @RestController
-@RequestMapping(MessagesController.BASR_URL)
+@RequestMapping(MessagesController.BASE_URL)
 public class MessagesController {
 
-    public static final String BASR_URL = "/messages";
+    public static final String BASE_URL = "/messages";
 
     private final MessagesService messagesService;
 
@@ -40,5 +37,6 @@ public class MessagesController {
         return req;
 
     }
+
 
 }
