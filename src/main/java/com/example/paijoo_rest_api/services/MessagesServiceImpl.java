@@ -39,16 +39,17 @@ public class MessagesServiceImpl implements MessagesService {
     }
 
     @Override
-    public ArrayList<Integer> findAllUnreceivedConversationIdByUserId(int id) {
-        //LinkedHashSet<Integer> conversationIds = new LinkedHashSet<>(
-                //messagesRepository.findConversationIdWithUnreceivedMessages(id));
-        //ArrayList<Integer> unique_conversationIds = new ArrayList<Integer>(conversationIds);
-        return null;
+    public Boolean createMessage(Messages m) {
+        Random r = new Random();
+        m.getContent().setId(r.nextInt());
+        m.setId(Math.abs(r.nextInt()));
+        try{
+        messagesRepository.save(m);
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
+        return true;
     }
 
-
-    @Override
-    public Boolean createMessage(Long user_id, Long participant_id, Timestamp lastMessageReceived) {
-        return null;
-    }
 }

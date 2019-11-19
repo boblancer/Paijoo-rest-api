@@ -3,6 +3,7 @@ package com.example.paijoo_rest_api.controllers;
 import com.example.paijoo_rest_api.model.Conversation;
 import com.example.paijoo_rest_api.model.RequestBody.SendMessage;
 import com.example.paijoo_rest_api.model.RequestBody.TextContentRequestBody;
+import com.example.paijoo_rest_api.model.database.Messages;
 import com.example.paijoo_rest_api.services.MessagesService;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,15 +26,15 @@ public class MessagesController {
     ArrayList<Conversation> findUnreceivedMessages(@PathVariable("id") int id){
         System.out.println(id);
         return messagesService.findUnreceivedMessages(id);
-
     }
+
     @RequestMapping(value="/hello", method = RequestMethod.GET)
     String hello(){
         return "Hello";
     }
 
     @PostMapping("/post")
-    SendMessage<TextContentRequestBody> sendMessage(@RequestBody SendMessage<TextContentRequestBody> req){
+    Messages sendMessage(@RequestBody Messages req){
         return req;
 
     }
