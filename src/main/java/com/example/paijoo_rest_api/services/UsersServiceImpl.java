@@ -1,11 +1,9 @@
 package com.example.paijoo_rest_api.services;
 
 import com.example.paijoo_rest_api.model.database.Users;
-import com.example.paijoo_rest_api.repositories.MessagesRepository;
 import com.example.paijoo_rest_api.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 
 @Service
